@@ -3,11 +3,12 @@ class Solution:
         mp = defaultdict(int)
         res = 0
 
-        for num in nums:
-            if not mp[num]:
-                mp[num] = mp[num - 1] + mp[num + 1] + 1
-                mp[num - mp[num - 1]] = mp[num]
-                mp[num + mp[num + 1]] = mp[num]
-                res = max(res, mp[num])
+        for n in nums:
+            if not mp[n]:
+                mp[n] = mp[n+1] + mp[n-1] + 1
+                mp[n - mp[n-1]] = mp[n]
+                mp[n + mp[n+1]] = mp[n]
+            res = max(res, mp[n])
+
         return res
         
